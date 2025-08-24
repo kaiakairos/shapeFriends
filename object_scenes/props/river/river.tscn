@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://db7bmst1ubbgb"]
+
+[ext_resource type="Shader" uid="uid://cv71a3w5qeleb" path="res://object_scenes/props/river/river.gdshader" id="1_njr8f"]
+[ext_resource type="Texture2D" uid="uid://c1ctemx6ws2t" path="res://object_scenes/props/river/riverDither.png" id="3_njr8f"]
+
+[sub_resource type="Gradient" id="Gradient_y44m3"]
+offsets = PackedFloat32Array(0, 0.421569, 0.52451, 0.602941, 1)
+colors = PackedColorArray(0.372549, 0.780392, 0.862745, 1, 0.486275, 0.886275, 0.862745, 1, 0.873802, 0.977243, 0.970166, 1, 0.475673, 0.876404, 0.862745, 1, 0.372549, 0.780392, 0.862745, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_njr8f"]
+gradient = SubResource("Gradient_y44m3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bb6cr"]
+shader = ExtResource("1_njr8f")
+shader_parameter/gradient = SubResource("GradientTexture1D_njr8f")
+shader_parameter/speed_scale = 0.12
+shader_parameter/flow_speed = 0.055
+shader_parameter/stretch = 5.11
+shader_parameter/pixelateAmount = Vector2(400, 300)
+
+[node name="River" type="Line2D"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_bb6cr")
+points = PackedVector2Array(39, 53, 123, 190, 501, 168, 775, 175, 1108, 118, 1417, 140)
+width = 120.0
+texture = ExtResource("3_njr8f")
+texture_mode = 1

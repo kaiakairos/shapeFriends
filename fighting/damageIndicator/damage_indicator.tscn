@@ -1,0 +1,181 @@
+[gd_scene load_steps=8 format=3 uid="uid://xvylwe2k8qgd"]
+
+[ext_resource type="Script" uid="uid://d3uurkx736tap" path="res://fighting/damageIndicator/damage_indicator.gd" id="1_h74hb"]
+[ext_resource type="FontFile" uid="uid://canrduteibkjr" path="res://zeeg/font/Lilian.ttf" id="2_h74hb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h74hb"]
+font = ExtResource("2_h74hb")
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_j742j"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("axis:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("axis:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("axis:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("axis:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_bt8t5"]
+resource_name = "damage"
+length = 1.4625
+step = 0.0075
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("axis:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.239413, 1.4, 12.4815, -0.271866, -2.60741, 0.25, 0),
+"times": PackedFloat32Array(0, 0.947368)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("axis:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.0225564, -10.9852, -30.2148, -0.1, 0.325926, 0.126566, 0.325926, -7.07407, -0.0799499, -19, 0.0333333, -7.82222, -24.3481, -0.1, 0, 0.1, 0, -8.7037, -0.0333334, -9.77778, 0.0333333, -8.14815, -20.763, -0.056, 0, 0.0482958, 0, -9.02963, -0.0569986, -10.1037, 0.0333333, -8.14815),
+"times": PackedFloat32Array(0, 0.166667, 0.390977, 0.526316, 0.669173, 0.774436, 0.879699)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("axis:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0.124292, -0.25, 0, 0.0225564, 0.0105944, 0.33618, -0.0645999, 0.0113652, 0.0557008, 0.0113652, 2.02069, -0.0150376, -0.0105944, 0.0075188, -0.0317832, -0.416024, -0.0225564, 0.423777, 0.0238746, 0.0105945, 1.00363, -0.0588322, 0.0317832, 0.0451128, 0, 0.293802, -0.037594, 0.0105944, 0.0225564, 0.0529721, 1.19433, -0.0150376, -0.0175609, 0.0225564, 0.0211889, 1, -0.0225564, -0.0105944, 0.25, 0),
+"times": PackedFloat32Array(0, 0.0451128, 0.0827068, 0.157895, 0.278196, 0.37594, 0.406015, 0.511278)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("axis:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-1.61319, -3.57, 0, 0.0300752, -0.0105944, 2.55041, -0.0150376, -0.0211887, 0.0150376, -0.0105944, -0.659695, -0.0225564, 0.0105944, 0.0150376, 0.0105944, 1.69226, -0.0150376, -0.0105944, 0.0150376, 0, 0.993034, -0.0212382, -0.0317833, 0.0389121, 0.0211889, 1.76643, -0.0437946, -0.233077, 0.0238746, 0.0847553, 1, -0.0137194, 0.0105944, 0.25, 0),
+"times": PackedFloat32Array(0, 0.0300752, 0.0827068, 0.142857, 0.233083, 0.360902, 0.398496)
+}
+
+[sub_resource type="Animation" id="Animation_h74hb"]
+resource_name = "heal"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("axis:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1.45333, -0.25, 0, 0.133333, -0.0233208, 0.379667, -0.25, 0, 0.25, 0, 1.181, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.233333, 0.366667)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("axis:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.277266, -0.25, 0, 0.25, 0, 2.22251, -0.25, 0, 0.25, 0, 0.74, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.233333, 0.366667)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("axis:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.533333)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("axis:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.166667, 0.0298417, -6, -0.5, 0.182723, 0.25, 0),
+"times": PackedFloat32Array(0, 0.533333)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l7qaq"]
+_data = {
+&"RESET": SubResource("Animation_j742j"),
+&"damage": SubResource("Animation_bt8t5"),
+&"heal": SubResource("Animation_h74hb")
+}
+
+[node name="DamageIndicator" type="Node2D"]
+z_index = 4096
+script = ExtResource("1_h74hb")
+
+[node name="axis" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="axis"]
+offset_left = -70.0
+offset_top = -8.0
+offset_right = 70.0
+offset_bottom = 14.0
+text = "-32"
+label_settings = SubResource("LabelSettings_h74hb")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_l7qaq")
+}

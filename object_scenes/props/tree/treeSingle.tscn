@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://brt2ik8xo01i3"]
+
+[ext_resource type="Texture2D" uid="uid://dwf2wwpfvytcc" path="res://object_scenes/props/tree/treeBottom.png" id="1_pehgy"]
+[ext_resource type="Script" uid="uid://yg7kd6x428de" path="res://object_scenes/props/tree/tree_single.gd" id="1_w5mn3"]
+[ext_resource type="Texture2D" uid="uid://c5ya1eb18enbh" path="res://object_scenes/props/tree/treeTop.png" id="2_w5mn3"]
+[ext_resource type="Texture2D" uid="uid://cvsxr78pmm84e" path="res://object_scenes/props/tree/grassyShadow.png" id="4_pnhjt"]
+[ext_resource type="PackedScene" uid="uid://b3tvbmse6oamx" path="res://object_scenes/rotatorNode/rotator_node.tscn" id="5_swujv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pnhjt"]
+size = Vector2(36, 19)
+
+[node name="Tree" type="Node2D"]
+script = ExtResource("1_w5mn3")
+
+[node name="TreeBottom" type="Sprite2D" parent="."]
+position = Vector2(-0.5, -43.5)
+texture = ExtResource("1_pehgy")
+
+[node name="TreeTop" type="Sprite2D" parent="."]
+position = Vector2(-0.5, -43.5)
+texture = ExtResource("2_w5mn3")
+
+[node name="GrassyShadow" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(2, 4)
+texture = ExtResource("4_pnhjt")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3, -2.5)
+shape = SubResource("RectangleShape2D_pnhjt")
+
+[node name="RotatorNode" parent="." instance=ExtResource("5_swujv")]

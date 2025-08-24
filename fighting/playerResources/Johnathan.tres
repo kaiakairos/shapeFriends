@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PlayerData" load_steps=3 format=3 uid="uid://c00e8vk3sry4j"]
+
+[ext_resource type="Texture2D" uid="uid://blpschvyuq186" path="res://fighting/battleScreen/playerHealthDisplay/healthbar.png" id="1_3n1k7"]
+[ext_resource type="Script" uid="uid://d26i7rlqt7kx6" path="res://classes/PlayerData.gd" id="1_yfai3"]
+
+[resource]
+script = ExtResource("1_yfai3")
+name = "johnathan"
+color = Color(0.0165, 0.99, 0, 1)
+baseHealthMax = 20620
+moves = Array[String](["kill", "cool flip"])
+battleBorder = ExtResource("1_3n1k7")
+metadata/_custom_type_script = "uid://d26i7rlqt7kx6"

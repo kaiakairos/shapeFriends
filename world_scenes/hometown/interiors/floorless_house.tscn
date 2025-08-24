@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqfa20wlhai66"]
+
+[ext_resource type="PackedScene" uid="uid://db7bmst1ubbgb" path="res://object_scenes/props/river/river.tscn" id="1_vo5b1"]
+[ext_resource type="Texture2D" uid="uid://cs6hxu1361dgv" path="res://world_scenes/hometown/interiors/floorlessRoom.png" id="2_kk542"]
+[ext_resource type="PackedScene" uid="uid://buks8rr1yht64" path="res://object_scenes/player/player.tscn" id="3_1q432"]
+[ext_resource type="PackedScene" uid="uid://bgwscppl63blu" path="res://object_scenes/props/river/river_foam.tscn" id="4_24uef"]
+[ext_resource type="PackedScene" uid="uid://bh65rw4oxhp5n" path="res://object_scenes/transitionTrigger/level_transition.tscn" id="5_kk542"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1q432"]
+size = Vector2(87, 25)
+
+[node name="FloorlessHouse" type="Node2D"]
+y_sort_enabled = true
+
+[node name="River" parent="." instance=ExtResource("1_vo5b1")]
+z_index = -64
+position = Vector2(434, 53)
+points = PackedVector2Array(54, 89, -175, 88, -292, 82, -304, 133, -474, 124, -463, 242, -262, 230, -225, 202, -77, 207, -28, 334)
+
+[node name="FloorlessRoom" type="Sprite2D" parent="."]
+z_index = -60
+texture = ExtResource("2_kk542")
+centered = false
+
+[node name="Player" parent="." instance=ExtResource("3_1q432")]
+position = Vector2(347, 291)
+cameraLimitX = Vector2(0, 400)
+cameraLimitY = Vector2(0, 300)
+
+[node name="riverFoam" parent="." instance=ExtResource("4_24uef")]
+z_index = -61
+position = Vector2(185, 130)
+points = PackedVector2Array(-169, 22, -155, 30, -132, 30, -106, 29, -94, 13, -80, -12, -78, -42, -65, -42, -1, -41, 39, -37, 119, -28, 208, -22, 289, 25, 277, 101, 93, 98, 59, 104, 60, 127, 63, 156, 71, 160, 99, 168)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(192, 292, 200, 326, 325, 363, 322, 292, 296, 292, 296, 261, 262, 260, 246, 253, 250, 194, 390, 189, 387, 284, 373, 285, 372, 369, 456, 359, 464, 162, 203, 161)
+
+[node name="LevelTransition" parent="." instance=ExtResource("5_kk542")]
+position = Vector2(329, 319)
+levelString = "res://world_scenes/hometown/home_town_north.tscn"
+pos = Vector2(389, 330)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransition"]
+position = Vector2(33.5, -2.5)
+shape = SubResource("RectangleShape2D_1q432")

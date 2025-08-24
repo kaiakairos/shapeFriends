@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://crv5d8hvqg66r"]
+
+[ext_resource type="Script" uid="uid://ci42kv1m46s0q" path="res://fighting/enemies/test/test_enemy.gd" id="1_vhr74"]
+[ext_resource type="Texture2D" uid="uid://bch1oqom3av33" path="res://goku.png" id="2_vhr74"]
+
+[node name="TestEnemy" type="Node2D"]
+script = ExtResource("1_vhr74")
+defense = 0.9
+speed = 1
+enemyName = "goku"
+enemyDescription = "his power level....
+its over 12 !!!!!!!!!!!!!!"
+xpDrop = 670
+
+[node name="Goku" type="Sprite2D" parent="."]
+position = Vector2(1, 8)
+texture = ExtResource("2_vhr74")

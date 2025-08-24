@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://buks8rr1yht64"]
+
+[ext_resource type="Script" uid="uid://dipahiwfg0y4w" path="res://object_scenes/player/player.gd" id="1_1gb37"]
+[ext_resource type="Texture2D" uid="uid://cnrs1nx0v1yyg" path="res://object_scenes/player/playerSkins/squareNew.png" id="2_1gb37"]
+[ext_resource type="PackedScene" uid="uid://b3tvbmse6oamx" path="res://object_scenes/rotatorNode/rotator_node.tscn" id="3_adcoq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_airh8"]
+radius = 6.08276
+
+[node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_1gb37")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_1gb37")
+offset = Vector2(0, -27.5)
+hframes = 3
+vframes = 3
+
+[node name="RotatorNode" parent="sprite" instance=ExtResource("3_adcoq")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_airh8")
+
+[node name="interact" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+collision_mask = 4
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="friends" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -19)
+ignore_rotation = false
+zoom = Vector2(1, 0.5)
+
+[node name="stairSlower" type="RayCast2D" parent="."]
+target_position = Vector2(0, 2)
+collision_mask = 8
+hit_from_inside = true
+collide_with_areas = true

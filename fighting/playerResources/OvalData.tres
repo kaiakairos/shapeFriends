@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PlayerData" load_steps=4 format=3 uid="uid://bfi8ef0im4gor"]
+
+[ext_resource type="Texture2D" uid="uid://bqddbi2qul8qc" path="res://fighting/battleScreen/playerHealthDisplay/bg4.png" id="1_qp8qg"]
+[ext_resource type="Script" uid="uid://d26i7rlqt7kx6" path="res://classes/PlayerData.gd" id="1_vhfb7"]
+[ext_resource type="Texture2D" uid="uid://dalm1nvvg5ieu" path="res://object_scenes/player/playerSkins/ovalNormal.png" id="3_e6g4u"]
+
+[resource]
+script = ExtResource("1_vhfb7")
+name = "oval"
+color = Color(0.0980392, 0.443137, 1, 1)
+baseHealthMax = 6
+baseAttack = 3
+moves = Array[String](["check", "fire"])
+battleBorder = ExtResource("1_qp8qg")
+worldSprite = ExtResource("3_e6g4u")
+metadata/_custom_type_script = "uid://d26i7rlqt7kx6"

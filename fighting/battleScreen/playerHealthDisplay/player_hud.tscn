@@ -1,0 +1,107 @@
+[gd_scene load_steps=15 format=3 uid="uid://bb50n8auhhhkb"]
+
+[ext_resource type="Script" uid="uid://byfljk36oc5j8" path="res://fighting/battleScreen/playerHealthDisplay/player_hud.gd" id="1_ek4wk"]
+[ext_resource type="Material" uid="uid://crm00w2odwhb2" path="res://zeeg/material/marbleScrollMaterial.tres" id="2_nsv33"]
+[ext_resource type="Texture2D" uid="uid://c4hlib2323u66" path="res://fighting/battleScreen/playerHealthDisplay/bg1.png" id="3_be45x"]
+[ext_resource type="Texture2D" uid="uid://blpschvyuq186" path="res://fighting/battleScreen/playerHealthDisplay/healthbar.png" id="4_qqbow"]
+[ext_resource type="FontFile" uid="uid://c88ch8sd0vtm8" path="res://zeeg/font/GrapeSoda.ttf" id="5_05ucf"]
+[ext_resource type="FontFile" uid="uid://bv2evd52rtwtj" path="res://zeeg/font/Arcadepix Plus.ttf" id="5_be45x"]
+[ext_resource type="Texture2D" uid="uid://dgbfr0sio0ejm" path="res://fighting/battleScreen/playerHealthDisplay/selectIcon1.png" id="5_qqbow"]
+[ext_resource type="Texture2D" uid="uid://cyt5ls8lq5ggr" path="res://fighting/battleScreen/playerHealthDisplay/selectIcon2.png" id="6_nsv33"]
+[ext_resource type="Texture2D" uid="uid://q5fk7vmc0uju" path="res://fighting/battleScreen/playerHealthDisplay/selectIcon3.png" id="7_uhuv5"]
+[ext_resource type="Texture2D" uid="uid://dpb45hiejds6c" path="res://fighting/battleScreen/playerHealthDisplay/selectIcon4.png" id="8_05ucf"]
+[ext_resource type="AudioStream" uid="uid://x0qebsojome5" path="res://sound/hit.ogg" id="10_uhuv5"]
+[ext_resource type="AudioStream" uid="uid://dbrx3vqmdobcc" path="res://sound/heal.ogg" id="11_05ucf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_awubx"]
+font = ExtResource("5_be45x")
+font_size = 8
+font_color = Color(0.71565, 0.78, 0.7098, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mqnao"]
+font = ExtResource("5_05ucf")
+font_size = 12
+
+[node name="playerHUD" type="Node2D"]
+script = ExtResource("1_ek4wk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_right = 142.0
+offset_bottom = 48.0
+color = Color(0.133196, 0.133196, 0.133196, 1)
+
+[node name="bgsprite" type="Sprite2D" parent="."]
+clip_children = 2
+material = ExtResource("2_nsv33")
+position = Vector2(-2, -1)
+texture = ExtResource("3_be45x")
+centered = false
+
+[node name="ColorRect" type="ColorRect" parent="bgsprite"]
+offset_right = 99.0
+offset_bottom = 63.0
+
+[node name="healthBar" type="TextureProgressBar" parent="."]
+offset_left = 7.0
+offset_top = 19.0
+offset_right = 85.0
+offset_bottom = 22.0
+value = 75.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_qqbow")
+texture_progress = ExtResource("4_qqbow")
+tint_under = Color(0, 0, 0, 1)
+
+[node name="healthAmountLabel" type="Label" parent="."]
+offset_left = 51.0
+offset_top = 12.0
+offset_right = 85.0
+offset_bottom = 22.0
+text = "100 / 100"
+label_settings = SubResource("LabelSettings_awubx")
+horizontal_alignment = 2
+
+[node name="name" type="Label" parent="."]
+offset_left = 9.0
+offset_top = 6.0
+offset_right = 87.0
+offset_bottom = 20.0
+text = "square"
+label_settings = SubResource("LabelSettings_mqnao")
+
+[node name="outline" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(5, 4, 196, 2, 195, 96, 6, 95)
+closed = true
+width = 2.0
+
+[node name="selectionIcons" type="Node2D" parent="."]
+modulate = Color(0.0980392, 0.443137, 1, 1)
+position = Vector2(0, 33)
+
+[node name="fight" type="Sprite2D" parent="selectionIcons"]
+position = Vector2(16, 0)
+texture = ExtResource("5_qqbow")
+
+[node name="special" type="Sprite2D" parent="selectionIcons"]
+position = Vector2(37, 0)
+texture = ExtResource("6_nsv33")
+
+[node name="item" type="Sprite2D" parent="selectionIcons"]
+position = Vector2(58, 0)
+texture = ExtResource("7_uhuv5")
+
+[node name="defend" type="Sprite2D" parent="selectionIcons"]
+position = Vector2(79, 0)
+texture = ExtResource("8_05ucf")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(89, 32)
+stream = ExtResource("10_uhuv5")
+max_polyphony = 3
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(89, 32)
+stream = ExtResource("11_05ucf")
+max_polyphony = 3

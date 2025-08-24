@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddf0rtvpmbicb"]
+
+[ext_resource type="Script" uid="uid://cmltqm6pwgi2x" path="res://dialogue/cutsceneObjectTypes/basic_text_cutscene.gd" id="1_6yt82"]
+
+[node name="BasicTextCutscene" type="Node"]
+script = ExtResource("1_6yt82")

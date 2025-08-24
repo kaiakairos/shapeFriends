@@ -1,0 +1,311 @@
+[gd_scene load_steps=24 format=3 uid="uid://bakch8m5cfpaj"]
+
+[ext_resource type="Script" uid="uid://c6yk7ytq8rido" path="res://fighting/battleScreen/battle_screen.gd" id="1_ovyxa"]
+[ext_resource type="Texture2D" path="res://icon.svg" id="2_61h3k"]
+[ext_resource type="Script" uid="uid://bnu7tmc3k55vn" path="res://fighting/battleScreen/battleStateMachine.gd" id="3_5joax"]
+[ext_resource type="Script" uid="uid://cijgwoefps2qd" path="res://fighting/battleScreen/screenshake.gd" id="4_5wsmj"]
+[ext_resource type="Script" uid="uid://sc5kmu4wjiy1" path="res://fighting/battleScreen/player_attack_handler.gd" id="5_nqnoh"]
+[ext_resource type="AudioStream" uid="uid://cplg2myhkf22b" path="res://sound/buildUp.ogg" id="6_m7r87"]
+[ext_resource type="AudioStream" uid="uid://d0pg74sneittv" path="res://sound/flame.ogg" id="7_q4qys"]
+[ext_resource type="PackedScene" uid="uid://ck326uu8513v1" path="res://dialogue/dialogueBox/dialogue_box.tscn" id="8_dj1pt"]
+[ext_resource type="Script" uid="uid://dk8atjpifvcd3" path="res://fighting/battleScreen/manaBar/mana_bar_big.gd" id="9_vfhp4"]
+[ext_resource type="Texture2D" uid="uid://cc2y8q20hjemm" path="res://fighting/battleScreen/manaBar/base.png" id="10_10cvu"]
+[ext_resource type="Material" uid="uid://crm00w2odwhb2" path="res://zeeg/material/marbleScrollMaterial.tres" id="10_asnjr"]
+[ext_resource type="Texture2D" uid="uid://dwf7t8sf0kyu2" path="res://fighting/battleScreen/manaBar/mask.png" id="12_6jrun"]
+[ext_resource type="Texture2D" uid="uid://b7sgo6rlklujb" path="res://fighting/battleScreen/manaBar/liquid.png" id="13_dee7q"]
+[ext_resource type="AudioStream" uid="uid://chsk664kxvoeo" path="res://sound/menu.ogg" id="14_6jrun"]
+[ext_resource type="AudioStream" uid="uid://dvo8me5yt3b6r" path="res://sound/menuSelect.ogg" id="15_dee7q"]
+[ext_resource type="FontFile" uid="uid://canrduteibkjr" path="res://zeeg/font/Lilian.ttf" id="16_32qhg"]
+[ext_resource type="FontFile" uid="uid://c88ch8sd0vtm8" path="res://zeeg/font/GrapeSoda.ttf" id="16_q4qys"]
+[ext_resource type="Texture2D" uid="uid://x6f5qhl3rot6" path="res://fighting/battleScreen/itemArrow/arrow.png" id="16_yxd8a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dj1pt"]
+font = ExtResource("16_q4qys")
+font_size = 21
+
+[sub_resource type="LabelSettings" id="LabelSettings_5wsmj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_asnjr"]
+font = ExtResource("16_32qhg")
+font_size = 31
+outline_size = 22
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6jrun"]
+line_spacing = 4.0
+font = ExtResource("16_q4qys")
+font_size = 15
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 11
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uk3uw"]
+font = ExtResource("16_q4qys")
+font_size = 15
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 11
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="BattleScreen" type="Node2D"]
+script = ExtResource("1_ovyxa")
+
+[node name="stateMachine" type="Node" parent="."]
+script = ExtResource("3_5joax")
+
+[node name="screenshake" type="Node" parent="."]
+script = ExtResource("4_5wsmj")
+
+[node name="playerAttackHandler" type="Node" parent="."]
+script = ExtResource("5_nqnoh")
+
+[node name="attackSounds" type="Node" parent="playerAttackHandler"]
+
+[node name="flameBuild" type="AudioStreamPlayer" parent="playerAttackHandler/attackSounds"]
+stream = ExtResource("6_m7r87")
+volume_db = -4.0
+
+[node name="flameAttack" type="AudioStreamPlayer" parent="playerAttackHandler/attackSounds"]
+stream = ExtResource("7_q4qys")
+volume_db = -2.0
+max_polyphony = 3
+
+[node name="banner" type="ColorRect" parent="."]
+z_index = -1000
+offset_left = -8.0
+offset_top = -6.0
+offset_right = 405.0
+offset_bottom = 28.0
+color = Color(0, 0, 0, 1)
+
+[node name="banner3" type="ColorRect" parent="."]
+z_index = -1000
+offset_left = -8.0
+offset_top = 183.0
+offset_right = 405.0
+offset_bottom = 221.0
+color = Color(0, 0, 0, 1)
+
+[node name="PlayerHUDContainer" type="Node2D" parent="."]
+position = Vector2(21, 183)
+
+[node name="banner2" type="ColorRect" parent="."]
+offset_left = -1.0
+offset_top = 206.0
+offset_right = 401.0
+offset_bottom = 301.0
+color = Color(0, 0, 0, 1)
+
+[node name="enemyContainer" type="Node2D" parent="."]
+z_index = -1
+position = Vector2(81, 100)
+
+[node name="tempStateLabel" type="Label" parent="."]
+self_modulate = Color(1, 1, 1, 0.492)
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 80.0
+offset_bottom = 26.0
+text = "state:idle"
+
+[node name="enemyInfo" type="Node2D" parent="."]
+visible = false
+z_index = 660
+position = Vector2(44, 241)
+
+[node name="enemyName" type="Label" parent="enemyInfo"]
+offset_left = -10.0
+offset_top = -7.0
+offset_right = 115.0
+offset_bottom = 20.0
+text = "enemy name"
+label_settings = SubResource("LabelSettings_dj1pt")
+
+[node name="enemyHealthbar" type="TextureProgressBar" parent="enemyInfo"]
+offset_left = 156.0
+offset_top = 2.0
+offset_right = 269.0
+offset_bottom = 28.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("2_61h3k")
+texture_progress = ExtResource("2_61h3k")
+tint_under = Color(0.0605303, 0.0605303, 0.0605303, 1)
+tint_progress = Color(1, 5.525, 1, 1)
+
+[node name="tempSelectionLabel" type="Label" parent="."]
+offset_left = -483.0
+offset_top = 144.0
+offset_right = -369.0
+offset_bottom = 179.0
+text = "<- bash ->"
+label_settings = SubResource("LabelSettings_5wsmj")
+horizontal_alignment = 1
+
+[node name="dialogueBox" parent="." instance=ExtResource("8_dj1pt")]
+position = Vector2(-27, 202)
+
+[node name="manaBarBig" type="Node2D" parent="."]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("9_vfhp4")
+
+[node name="Base" type="Sprite2D" parent="manaBarBig"]
+material = ExtResource("10_asnjr")
+position = Vector2(746, 502)
+scale = Vector2(2, 2)
+texture = ExtResource("10_10cvu")
+hframes = 3
+
+[node name="Mask" type="Sprite2D" parent="manaBarBig"]
+clip_children = 1
+position = Vector2(746, 502)
+scale = Vector2(2, 2)
+texture = ExtResource("12_6jrun")
+hframes = 3
+
+[node name="juice2" type="Node2D" parent="manaBarBig/Mask"]
+position = Vector2(0, 128)
+
+[node name="liquidSlide2" type="Node2D" parent="manaBarBig/Mask/juice2"]
+modulate = Color(0.927437, 0.705379, 0.71929, 1)
+position = Vector2(-139, -1)
+
+[node name="Liquid" type="Sprite2D" parent="manaBarBig/Mask/juice2/liquidSlide2"]
+texture = ExtResource("13_dee7q")
+centered = false
+
+[node name="Liquid2" type="Sprite2D" parent="manaBarBig/Mask/juice2/liquidSlide2"]
+position = Vector2(100, 0)
+texture = ExtResource("13_dee7q")
+centered = false
+
+[node name="liquidSlide" type="Node2D" parent="manaBarBig/Mask/juice2"]
+position = Vector2(-50, 2)
+
+[node name="Liquid" type="Sprite2D" parent="manaBarBig/Mask/juice2/liquidSlide"]
+texture = ExtResource("13_dee7q")
+centered = false
+
+[node name="Liquid2" type="Sprite2D" parent="manaBarBig/Mask/juice2/liquidSlide"]
+position = Vector2(100, 0)
+texture = ExtResource("13_dee7q")
+centered = false
+
+[node name="ColorRect" type="ColorRect" parent="manaBarBig/Mask/juice2"]
+offset_left = -49.0
+offset_top = 23.0
+offset_right = 51.0
+offset_bottom = 23.0
+
+[node name="juice" type="Node2D" parent="manaBarBig/Mask"]
+modulate = Color(0.44, 1, 0.710667, 1)
+position = Vector2(0, 32)
+
+[node name="liquidSlide2" type="Node2D" parent="manaBarBig/Mask/juice"]
+modulate = Color(0.927437, 0.705379, 0.71929, 1)
+position = Vector2(-139, -1)
+
+[node name="Liquid" type="Sprite2D" parent="manaBarBig/Mask/juice/liquidSlide2"]
+texture = ExtResource("13_dee7q")
+centered = false
+
+[node name="Liquid2" type="Sprite2D" parent="manaBarBig/Mask/juice/liquidSlide2"]
+position = Vector2(100, 0)
+texture = ExtResource("13_dee7q")
+centered = false
+
+[node name="liquidSlide" type="Node2D" parent="manaBarBig/Mask/juice"]
+position = Vector2(-50, 2)
+
+[node name="Liquid" type="Sprite2D" parent="manaBarBig/Mask/juice/liquidSlide"]
+texture = ExtResource("13_dee7q")
+centered = false
+
+[node name="Liquid2" type="Sprite2D" parent="manaBarBig/Mask/juice/liquidSlide"]
+position = Vector2(100, 0)
+texture = ExtResource("13_dee7q")
+centered = false
+
+[node name="ColorRect" type="ColorRect" parent="manaBarBig/Mask/juice"]
+offset_left = -49.0
+offset_top = 23.0
+offset_right = 51.0
+offset_bottom = 248.0
+
+[node name="Label" type="Label" parent="manaBarBig"]
+offset_left = 700.0
+offset_top = 566.0
+offset_right = 792.0
+offset_bottom = 603.0
+text = "99"
+label_settings = SubResource("LabelSettings_asnjr")
+horizontal_alignment = 2
+
+[node name="itemcontainer" type="Node2D" parent="."]
+visible = false
+position = Vector2(-147, 107)
+
+[node name="ColorRect" type="ColorRect" parent="itemcontainer"]
+offset_left = 367.0
+offset_top = 108.0
+offset_right = 486.0
+offset_bottom = 183.0
+color = Color(0, 0, 0, 0.723)
+
+[node name="Label" type="Label" parent="itemcontainer"]
+offset_left = 584.0
+offset_top = 370.0
+offset_right = 799.0
+offset_bottom = 511.0
+text = "label settingsholder
+"
+label_settings = SubResource("LabelSettings_6jrun")
+autowrap_mode = 2
+
+[node name="desc" type="Label" parent="itemcontainer"]
+offset_left = 371.0
+offset_top = 109.0
+offset_right = 485.0
+offset_bottom = 181.0
+text = "FIRE
+deals 10 damage to all enemies"
+label_settings = SubResource("LabelSettings_uk3uw")
+autowrap_mode = 2
+
+[node name="cost" type="Label" parent="itemcontainer"]
+offset_left = 370.0
+offset_top = 166.0
+offset_right = 482.0
+offset_bottom = 190.0
+text = "100 sp"
+label_settings = SubResource("LabelSettings_uk3uw")
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="container" type="GridContainer" parent="itemcontainer"]
+offset_left = 169.0
+offset_top = 116.0
+offset_right = 797.0
+offset_bottom = 236.0
+theme_override_constants/v_separation = 7
+columns = 2
+
+[node name="Arrow" type="Sprite2D" parent="itemcontainer"]
+visible = false
+position = Vector2(245, 184)
+texture = ExtResource("16_yxd8a")
+
+[node name="Arrow2" type="Sprite2D" parent="itemcontainer"]
+visible = false
+position = Vector2(245, 108)
+rotation = 3.14159
+texture = ExtResource("16_yxd8a")
+
+[node name="MenuClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_6jrun")
+volume_db = -2.0
+
+[node name="MenuSelectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_dee7q")
+volume_db = -1.5

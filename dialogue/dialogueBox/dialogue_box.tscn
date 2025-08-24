@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://ck326uu8513v1"]
+
+[ext_resource type="Script" uid="uid://b6fdqcqoy66tu" path="res://dialogue/dialogueBox/dialogue_box.gd" id="1_eh4c8"]
+[ext_resource type="Texture2D" uid="uid://cijx7x67s4s8x" path="res://dialogue/dialogueBox/box.png" id="1_ll3no"]
+[ext_resource type="Material" uid="uid://crm00w2odwhb2" path="res://zeeg/material/marbleScrollMaterial.tres" id="2_7c7bf"]
+[ext_resource type="Texture2D" uid="uid://it1tgn4x2uqf" path="res://dialogue/dialogueBox/placeholderCharacter.png" id="5_7c7bf"]
+[ext_resource type="FontFile" uid="uid://c88ch8sd0vtm8" path="res://zeeg/font/GrapeSoda.ttf" id="5_k16hv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wjo07"]
+line_spacing = 4.0
+font = ExtResource("5_k16hv")
+font_size = 17
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="dialogueBox" type="Node2D"]
+script = ExtResource("1_eh4c8")
+
+[node name="Box" type="Sprite2D" parent="."]
+material = ExtResource("2_7c7bf")
+position = Vector2(18, 0)
+texture = ExtResource("1_ll3no")
+centered = false
+vframes = 3
+
+[node name="portrait" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(145, 96)
+texture = ExtResource("5_7c7bf")
+
+[node name="characterLabel" type="Label" parent="."]
+visible = false
+offset_left = 227.0
+offset_top = 39.0
+offset_right = 716.0
+offset_bottom = 168.0
+text = "hi everyone...
+my name is pomni, i'm from the amazing digital circus!"
+label_settings = SubResource("LabelSettings_wjo07")
+autowrap_mode = 2
+visible_characters_behavior = 1
+
+[node name="baseLabel" type="Label" parent="."]
+offset_left = 56.0
+offset_top = 20.0
+offset_right = 341.0
+offset_bottom = 86.0
+text = "you picked up the ugly ass shoes...
+you dread putting them on, they're filled with sand. "
+label_settings = SubResource("LabelSettings_wjo07")
+autowrap_mode = 2
+visible_characters_behavior = 1

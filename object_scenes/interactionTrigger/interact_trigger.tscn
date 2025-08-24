@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://biig2nqrvmkva"]
+
+[ext_resource type="Script" uid="uid://537lm8f3787n" path="res://object_scenes/interactionTrigger/interact_trigger.gd" id="1_mihlf"]
+
+[node name="InteractTrigger" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_mihlf")

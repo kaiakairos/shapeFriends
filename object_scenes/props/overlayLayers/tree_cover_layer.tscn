@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvng2gqx1wwm5"]
+
+[ext_resource type="Shader" uid="uid://17b2vu8dq81a" path="res://object_scenes/props/overlayLayers/tree_cover_layer.gdshader" id="1_a3coe"]
+[ext_resource type="Texture2D" uid="uid://sbyncxctigiw" path="res://object_scenes/props/overlayLayers/treeCoverLayer.png" id="1_wm8ss"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a3coe"]
+shader = ExtResource("1_a3coe")
+shader_parameter/balls = 107.305
+shader_parameter/dick = 0.002
+shader_parameter/scale = 1.0
+
+[node name="treeCoverLayer" type="Node2D"]
+
+[node name="TreeCoverLayer" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_a3coe")
+texture = ExtResource("1_wm8ss")
+centered = false

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvulqj0udkiw1"]
+
+[ext_resource type="Script" uid="uid://u2a2msulau7d" path="res://classes/CutsceneScript.gd" id="1_ht7un"]
+
+[node name="LevelTransition" type="Node"]
+script = ExtResource("1_ht7un")
+metadata/_custom_type_script = "uid://u2a2msulau7d"

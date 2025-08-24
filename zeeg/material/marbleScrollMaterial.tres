@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://crm00w2odwhb2"]
+
+[ext_resource type="Shader" uid="uid://bjy8vklqxfaxk" path="res://dialogue/dialogueBox/dialogue_box.gdshader" id="1_t4nn5"]
+[ext_resource type="Texture2D" uid="uid://dtpuv3aotrdrd" path="res://dialogue/dialogueBox/background.png" id="2_ed521"]
+[ext_resource type="Texture2D" uid="uid://bugohtxs5t4w8" path="res://dialogue/dialogueBox/background2.png" id="3_ed521"]
+
+[resource]
+shader = ExtResource("1_t4nn5")
+shader_parameter/poop = ExtResource("2_ed521")
+shader_parameter/poop2 = ExtResource("3_ed521")
+shader_parameter/speed = Vector2(0.03, 0.015)
+shader_parameter/speed2 = Vector2(-0.05, -0.02)
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/pixelateAmount = Vector2(100, 75)
