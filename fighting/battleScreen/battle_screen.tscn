@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://bakch8m5cfpaj"]
 
 [ext_resource type="Script" uid="uid://c6yk7ytq8rido" path="res://fighting/battleScreen/battle_screen.gd" id="1_ovyxa"]
-[ext_resource type="Texture2D" path="res://icon.svg" id="2_61h3k"]
+[ext_resource type="PackedScene" uid="uid://crv5d8hvqg66r" path="res://fighting/enemies/test/test_enemy.tscn" id="2_q4qys"]
 [ext_resource type="Script" uid="uid://bnu7tmc3k55vn" path="res://fighting/battleScreen/battleStateMachine.gd" id="3_5joax"]
 [ext_resource type="Script" uid="uid://cijgwoefps2qd" path="res://fighting/battleScreen/screenshake.gd" id="4_5wsmj"]
 [ext_resource type="Script" uid="uid://sc5kmu4wjiy1" path="res://fighting/battleScreen/player_attack_handler.gd" id="5_nqnoh"]
@@ -50,6 +50,8 @@ shadow_color = Color(0, 0, 0, 1)
 
 [node name="BattleScreen" type="Node2D"]
 script = ExtResource("1_ovyxa")
+enemies = Array[PackedScene]([ExtResource("2_q4qys")])
+messages = Array[String](["balls"])
 
 [node name="stateMachine" type="Node" parent="."]
 script = ExtResource("3_5joax")
@@ -129,8 +131,6 @@ offset_right = 269.0
 offset_bottom = 28.0
 value = 50.0
 nine_patch_stretch = true
-texture_under = ExtResource("2_61h3k")
-texture_progress = ExtResource("2_61h3k")
 tint_under = Color(0.0605303, 0.0605303, 0.0605303, 1)
 tint_progress = Color(1, 5.525, 1, 1)
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwd8s46dp4pje"
-path="res://.godot/imported/grassy.png-7f03bb5a0839c6678eb8cf4a5de1396c.ctex"
+uid="uid://csg6amkxp2rtq"
+path="res://.godot/imported/square.png-967622fcf8181e51337af5121fe0cacc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://object_scenes/tilemap/grassy.png"
-dest_files=["res://.godot/imported/grassy.png-7f03bb5a0839c6678eb8cf4a5de1396c.ctex"]
+source_file="res://object_scenes/player/playerSkins/square.png"
+dest_files=["res://.godot/imported/square.png-967622fcf8181e51337af5121fe0cacc.ctex"]
 
 [params]
 
