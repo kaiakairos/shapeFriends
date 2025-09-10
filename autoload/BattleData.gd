@@ -7,9 +7,9 @@ extends Node
 #var playersInCrew :int = 4 # 1 - 4
 var players :Array[PlayerData]= [
 	load("res://fighting/playerResources/SquareData.tres"),
-	#load("res://fighting/playerResources/TriangleData.tres"),
-	#load("res://fighting/playerResources/RhombusData.tres"),
-	#load("res://fighting/playerResources/OvalData.tres"),
+	load("res://fighting/playerResources/TriangleData.tres"),
+	load("res://fighting/playerResources/RhombusData.tres"),
+	load("res://fighting/playerResources/OvalData.tres"),
 ]
 
 signal changePlayerCount

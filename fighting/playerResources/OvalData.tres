@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bqddbi2qul8qc" path="res://fighting/battleScreen/playerHealthDisplay/bg4.png" id="1_qp8qg"]
 [ext_resource type="Script" uid="uid://d26i7rlqt7kx6" path="res://classes/PlayerData.gd" id="1_vhfb7"]
-[ext_resource type="Texture2D" uid="uid://dalm1nvvg5ieu" path="res://object_scenes/player/playerSkins/ovalNormal.png" id="3_e6g4u"]
+[ext_resource type="Texture2D" uid="uid://c57rb532wks3f" path="res://object_scenes/player/playerSkins/triangle.png" id="3_e6g4u"]
 
 [resource]
 script = ExtResource("1_vhfb7")

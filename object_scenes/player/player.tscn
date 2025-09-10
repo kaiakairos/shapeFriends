@@ -1,9 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://buks8rr1yht64"]
+[gd_scene load_steps=5 format=3 uid="uid://buks8rr1yht64"]
 
 [ext_resource type="Script" uid="uid://dipahiwfg0y4w" path="res://object_scenes/player/player.gd" id="1_1gb37"]
+[ext_resource type="Shader" uid="uid://bf17o13cui0c8" path="res://zeeg/material/canvasOutline/canvasOutline.gdshader" id="2_adcoq"]
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_1gb37"]
+radius = 5.09902
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_airh8"]
+shader = ExtResource("2_adcoq")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = false
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("friendContainer")]
 y_sort_enabled = true
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_1gb37")
+friendContainer = NodePath("crew")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1gb37")
+
+[node name="crew" type="CanvasGroup" parent="."]
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_airh8")

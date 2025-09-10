@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Shape Friends"
-run/main_scene="uid://buks8rr1yht64"
+run/main_scene="uid://d4lhj8owviuac"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://cdgx5tdxklypm"
 
@@ -26,6 +26,8 @@ Saving="*res://autoload/Saving.gd"
 [debug]
 
 settings/stdout/print_fps=true
+gdscript/warnings/unused_parameter=0
+gdscript/warnings/narrowing_conversion=0
 
 [display]
 
