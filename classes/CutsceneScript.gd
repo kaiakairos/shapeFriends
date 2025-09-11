@@ -18,6 +18,7 @@ func runCutscene():
 	
 	Global.inCutscene = true
 	await cutscene()
+	await get_tree().process_frame # wait one frame in case of interaction
 	Global.inCutscene = false
 
 func displayDialogue(text:String,character:int=0,mood:int=0):

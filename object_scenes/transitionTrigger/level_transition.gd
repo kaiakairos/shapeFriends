@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var levelString:String = ""
-@export var pos:Vector2 = Vector2.ZERO
+@export var pos:Vector2i = Vector2i.ZERO
 @export var facing :int = 0
 
 

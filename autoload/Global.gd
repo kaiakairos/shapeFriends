@@ -4,14 +4,17 @@ extends Node
 ## determines if certain events have been logged, so dialogue can act accordingly
 var arbitraryTagData :Dictionary = {}
 
+# player stuff
 var inCutscene :bool = false
 var player :CharacterBody2D
-var camera :Camera2D
-var playerLoadPosition = null # can be vector2 or null
+var playerLoadPosition :Vector2i= Vector2i(-999,-999)
+var playerLoadFacing = 0
 
+# camera stuff
+var camera :GameCamera
 var canvasLayer :CanvasLayer = CanvasLayer.new()
-signal updateCamRotation(pos,angle)
-signal updateCamPosition(pos,angle)
+signal updateCamRotation(pos:Vector2i,angle:float)
+signal updateCamPosition(pos:Vector2i,angle:float)
 
 func _ready() -> void:
 	add_child(canvasLayer)
@@ -33,6 +36,7 @@ func switchLevel(levelFileString:String,position:Vector2,facing:int=0) -> void:
 	inCutscene = true
 	
 	playerLoadPosition = position
+	playerLoadFacing = facing
 	
 	var rect = ColorRect.new()
 	rect.color = Color.BLACK
@@ -90,7 +94,7 @@ func loadGame():
 		playerLoadPosition = str_to_var(data["playerPos"])
 		print(str_to_var(data["playerPos"]))
 	else:
-		playerLoadPosition = null
+		playerLoadPosition = Vector2i(-999,-999)
 	
 	arbitraryTagData = data["arbitraryData"]
 	

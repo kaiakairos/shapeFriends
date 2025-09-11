@@ -1,16 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4lhj8owviuac"]
+[gd_scene load_steps=12 format=3 uid="uid://d4lhj8owviuac"]
 
 [ext_resource type="PackedScene" uid="uid://buks8rr1yht64" path="res://object_scenes/player/player.tscn" id="1_o388r"]
-[ext_resource type="Texture2D" uid="uid://cdgx5tdxklypm" path="res://icon.png" id="2_musl7"]
+[ext_resource type="PackedScene" uid="uid://biig2nqrvmkva" path="res://object_scenes/interactionTrigger/interact_trigger.tscn" id="3_knbqj"]
+[ext_resource type="PackedScene" uid="uid://ddf0rtvpmbicb" path="res://dialogue/cutsceneObjectTypes/basic_text_cutscene.tscn" id="4_7vt8e"]
+[ext_resource type="PackedScene" uid="uid://bh65rw4oxhp5n" path="res://object_scenes/transitionTrigger/level_transition.tscn" id="5_0wvtl"]
+[ext_resource type="PackedScene" uid="uid://dl3g67afy4yg7" path="res://object_scenes/wall3D/wall_3d.tscn" id="6_0e55d"]
+[ext_resource type="PackedScene" uid="uid://cecryhaeawlmm" path="res://object_scenes/camera/game_camera.tscn" id="6_afaps"]
+[ext_resource type="Texture2D" uid="uid://bbgwaooqxlxk0" path="res://wallTest.png" id="7_0e55d"]
+[ext_resource type="PackedScene" uid="uid://xlbdgrmecl6n" path="res://object_scenes/floor3D/floor_3d.tscn" id="8_5kmfn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_musl7"]
 size = Vector2(102, 366)
 
+[sub_resource type="Curve" id="Curve_0wvtl"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0.001), 0.0, 0.0, 0, 0, Vector2(1, 0.684286), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_afaps"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -128, -168, 0, 0, 0, 0, -128, -128, 0, 0, 0, 0, 144, -88, 0, 0, 0, 0, 224, 64, 0, 0, 0, 0, 336, 120, 0, 0, 0, 0, 464, 200, 0, 0, 0, 0, 576, 224)
+}
+point_count = 7
+
 [node name="test" type="Node2D"]
-y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_o388r")]
-position = Vector2(205, 130)
+position = Vector2(-136, -176)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -18,8 +34,45 @@ position = Vector2(205, 130)
 position = Vector2(41, 173)
 shape = SubResource("RectangleShape2D_musl7")
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(306.047, 225)
-scale = Vector2(1.01562, 0.34375)
-texture = ExtResource("2_musl7")
-offset = Vector2(-3, -64)
+[node name="InteractTrigger" parent="." node_paths=PackedStringArray("cutsceneScript") instance=ExtResource("3_knbqj")]
+position = Vector2(272, 106)
+cutsceneScript = NodePath("BasicTextCutscene")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractTrigger"]
+polygon = PackedVector2Array(-2, -8, -10, 2, -2, 13, 9, 3)
+
+[node name="BasicTextCutscene" parent="InteractTrigger" instance=ExtResource("4_7vt8e")]
+textArray = Array[String](["FUCK !!!", "YOU !!!!"])
+
+[node name="LevelTransition" parent="." instance=ExtResource("5_0wvtl")]
+position = Vector2(624, 256)
+levelString = "res://world_scenes/test/test.tscn"
+pos = Vector2i(200, 32)
+facing = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LevelTransition"]
+polygon = PackedVector2Array(-7, -56, 3, 19, 54, 60, 104, 68, 128, 1, 129, -65)
+
+[node name="GameCamera" parent="." node_paths=PackedStringArray("path") instance=ExtResource("6_afaps")]
+path = NodePath("Path2D")
+rotationCurve = SubResource("Curve_0wvtl")
+
+[node name="Path2D" type="Path2D" parent="GameCamera"]
+curve = SubResource("Curve2D_afaps")
+
+[node name="wall3D" parent="." instance=ExtResource("6_0e55d")]
+points = PackedVector2Array(152, -216, 152, -128, 392, 104, 568, 176, 640, 176, 640, 272, 528, 272, 376, 248, 208, 128, 112, -40, -128, -80, -200, -160, -144, -224, 0, -160, 56, -152, 112, -144, 112, -216)
+wallTexture = ExtResource("7_0e55d")
+wallHeight = 5
+
+[node name="floor3D" parent="." instance=ExtResource("8_5kmfn")]
+position = Vector2(320, -48)
+color = Color(0.646029, 0.646029, 0.646029, 1)
+polygon = PackedVector2Array(-520, -112, -448, -32, -208, 8, -112, 176, 56, 296, 208, 320, 320, 320, 320, 224, 248, 224, 72, 152, -168, -80, -168, -192, -208, -192, -208, -96, -320, -112, -464, -176)
+
+[node name="floor3D2" parent="." instance=ExtResource("8_5kmfn")]
+position = Vector2(496, -72)
+color = Color(0.791999, 0.791999, 0.791999, 1)
+polygon = PackedVector2Array(-344, -56, -384, -72, -496, -88, -640, -152, -640, -360, 368, -360, 368, 48, 144, 248, 72, 248, -104, 176)
+height = 191
+onTop = true

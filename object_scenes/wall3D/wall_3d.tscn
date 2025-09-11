@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dl3g67afy4yg7"]
+
+[ext_resource type="Script" uid="uid://wg6umuqnxvmp" path="res://object_scenes/wall3D/wall_3d.gd" id="1_rkjus"]
+
+[node name="wall3D" type="Line2D"]
+texture_repeat = 2
+width = 2.0
+default_color = Color(0, 0, 0, 1)
+script = ExtResource("1_rkjus")
+
+[node name="polygons" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]

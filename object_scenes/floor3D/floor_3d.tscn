@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://xlbdgrmecl6n"]
+
+[ext_resource type="Script" uid="uid://dqp75fp7432oc" path="res://object_scenes/floor3D/floor_3d.gd" id="1_4pyir"]
+
+[node name="floor3D" type="Polygon2D"]
+z_index = -100
+texture_repeat = 2
+script = ExtResource("1_4pyir")
