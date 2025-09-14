@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d4lhj8owviuac"]
+[gd_scene load_steps=13 format=3 uid="uid://d4lhj8owviuac"]
 
 [ext_resource type="PackedScene" uid="uid://buks8rr1yht64" path="res://object_scenes/player/player.tscn" id="1_o388r"]
 [ext_resource type="PackedScene" uid="uid://biig2nqrvmkva" path="res://object_scenes/interactionTrigger/interact_trigger.tscn" id="3_knbqj"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cecryhaeawlmm" path="res://object_scenes/camera/game_camera.tscn" id="6_afaps"]
 [ext_resource type="Texture2D" uid="uid://bbgwaooqxlxk0" path="res://wallTest.png" id="7_0e55d"]
 [ext_resource type="PackedScene" uid="uid://xlbdgrmecl6n" path="res://object_scenes/floor3D/floor_3d.tscn" id="8_5kmfn"]
+[ext_resource type="Texture2D" uid="uid://dalm1nvvg5ieu" path="res://object_scenes/player/playerSkins/ovalNormal.png" id="9_nee4h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_musl7"]
 size = Vector2(102, 366)
@@ -19,9 +20,9 @@ point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_afaps"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -128, -168, 0, 0, 0, 0, -128, -128, 0, 0, 0, 0, 144, -88, 0, 0, 0, 0, 224, 64, 0, 0, 0, 0, 336, 120, 0, 0, 0, 0, 464, 200, 0, 0, 0, 0, 576, 224)
+"points": PackedVector2Array(0, 0, 0, 0, -128, -168, 0, 0, 0, 0, -128, -128, 0, 0, 0, 0, 144, -88, 0, 0, 0, 0, 224, 64, 0, 0, 0, 0, 336, 120, 0, 0, 0, 0, 464, 200)
 }
-point_count = 7
+point_count = 6
 
 [node name="test" type="Node2D"]
 
@@ -61,18 +62,45 @@ rotationCurve = SubResource("Curve_0wvtl")
 curve = SubResource("Curve2D_afaps")
 
 [node name="wall3D" parent="." instance=ExtResource("6_0e55d")]
-points = PackedVector2Array(152, -216, 152, -128, 392, 104, 568, 176, 640, 176, 640, 272, 528, 272, 376, 248, 208, 128, 112, -40, -128, -80, -200, -160, -144, -224, 0, -160, 56, -152, 112, -144, 112, -216)
+points = PackedVector2Array(152, -240, 152, -128, 392, 104, 568, 176, 640, 176, 640, 272, 528, 272, 376, 248, 208, 128, 96, 8, 32, 0, -88, -32, -200, -160, -144, -224, 0, -160, 56, -152, 112, -144, 112, -240)
 wallTexture = ExtResource("7_0e55d")
-wallHeight = 5
+tileWallTextureHeight = true
 
 [node name="floor3D" parent="." instance=ExtResource("8_5kmfn")]
 position = Vector2(320, -48)
-color = Color(0.646029, 0.646029, 0.646029, 1)
-polygon = PackedVector2Array(-520, -112, -448, -32, -208, 8, -112, 176, 56, 296, 208, 320, 320, 320, 320, 224, 248, 224, 72, 152, -168, -80, -168, -192, -208, -192, -208, -96, -320, -112, -464, -176)
+texture = ExtResource("7_0e55d")
+polygon = PackedVector2Array(-520, -112, -408, 16, -288, 48, -224, 56, -112, 176, 56, 296, 208, 320, 320, 320, 320, 224, 248, 224, 72, 152, -168, -80, -168, -192, -208, -192, -208, -96, -320, -112, -464, -176)
 
 [node name="floor3D2" parent="." instance=ExtResource("8_5kmfn")]
 position = Vector2(496, -72)
 color = Color(0.791999, 0.791999, 0.791999, 1)
-polygon = PackedVector2Array(-344, -56, -384, -72, -496, -88, -640, -152, -640, -360, 368, -360, 368, 48, 144, 248, 72, 248, -104, 176)
-height = 191
+texture = ExtResource("7_0e55d")
+polygon = PackedVector2Array(-344, -56, -384, -72, -496, -88, -640, -152, 0, 0, 128, 0, 128, 128, 0, 128, 0, 16, -64, 144, 144, 248, 72, 248, -104, 176)
+height = 128
 onTop = true
+
+[node name="wall3D2" parent="." instance=ExtResource("6_0e55d")]
+position = Vector2(112, -144)
+points = PackedVector2Array(0, 0, 40, 16)
+wallTexture = ExtResource("7_0e55d")
+wallHeight = 64
+tileWallTextureHeight = true
+generateCollider = false
+wallOffset = 64
+defaultXTextureOffset = -96
+
+[node name="wall3D3" parent="." instance=ExtResource("6_0e55d")]
+position = Vector2(160, 176)
+points = PackedVector2Array(-96, -288, -160, -224)
+wallTexture = ExtResource("9_nee4h")
+generateCollider = false
+cullBackface = false
+topAngleOffset = Vector2(32, 32)
+
+[node name="wall3D4" parent="." instance=ExtResource("6_0e55d")]
+position = Vector2(224, 240)
+points = PackedVector2Array(-160, -224, -96, -288)
+wallTexture = ExtResource("9_nee4h")
+generateCollider = false
+cullBackface = false
+topAngleOffset = Vector2(-32, -32)

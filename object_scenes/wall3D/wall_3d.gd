@@ -2,11 +2,21 @@ extends Line2D
 class_name Wall3D
 
 @export var wallTexture :Texture2D
-@export var wallHeight : int
+@export var wallHeight : int = 128
 @export var tileWallTextureHeight : bool = false
 @export var generateCollider : bool = true
+@export var shadeColor :Color = Color(0.8,0.8,0.8)
+
+@export var wallOffset :int = 0
+@export var reversed :bool = false
+@export var cullBackface :bool = true
+@export var z_index_force :int = 0
+
+@export var defaultXTextureOffset :int = 0
+@export var topAngleOffset :Vector2 = Vector2.ZERO
 
 @onready var polygonContainer :Node2D= $polygons
+
 
 func _ready() -> void:
 	createWallPolygons()
@@ -20,10 +30,6 @@ func _ready() -> void:
 		$StaticBody2D/CollisionPolygon2D.polygon =  createCollider()
 	
 	setAmbientOcclusion()
-	
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact"):
-		setUV() # debug
 
 func createWallPolygons():
 	for i in range(points.size() - 1):
@@ -37,7 +43,11 @@ func setPolygons(camPos:Vector2i,camAngle:float):
 		var normal = (points[i] - points[i+1]).rotated(PI/2.0).normalized()
 		
 		polygonOBJ.visible = !normal.dot( Vector2(0,1).rotated(camAngle) ) > 0.0
-		if !polygonOBJ.visible:
+		if reversed:
+			polygonOBJ.visible = !polygonOBJ.visible # flip if reversed
+		if !cullBackface:
+			polygonOBJ.visible = true
+		if !polygonOBJ.visible and cullBackface:
 			i += 1
 			continue
 		
@@ -45,13 +55,17 @@ func setPolygons(camPos:Vector2i,camAngle:float):
 		var pos2 = Global.camera.getZ(to_global(points[i+1]))
 		
 		polygonOBJ.z_index = min(pos1,pos2)
+		if z_index_force != 0:
+			polygonOBJ.z_index = z_index_force
+		
+		var baseOffset = Vector2(0,-wallOffset).rotated(camAngle)
 		
 		var newPolygon :PackedVector2Array
-		newPolygon.append(points[i])
-		newPolygon.append(points[i + 1])
+		newPolygon.append(points[i] + baseOffset)
+		newPolygon.append(points[i + 1] + baseOffset)
 		var offset = Vector2(0,-wallHeight).rotated(camAngle)
-		newPolygon.append(points[i + 1] + offset)
-		newPolygon.append(points[i] + offset)
+		newPolygon.append(points[i + 1] + offset + baseOffset + topAngleOffset)
+		newPolygon.append(points[i] + offset + baseOffset + topAngleOffset)
 		polygonOBJ.polygon = newPolygon
 		i += 1
 
@@ -66,6 +80,8 @@ func cameraPosOnlyUpdate(camPos:Vector2i,camAngle:float):
 
 func setUV():
 	var i :int= 0
+	var addX = defaultXTextureOffset
+	
 	for polygon in polygonContainer.get_children():
 		polygon.texture = wallTexture
 		var size = wallTexture.get_size()
@@ -76,19 +92,20 @@ func setUV():
 			size.y *= -1
 		
 		var newUV = PackedVector2Array()
-		newUV.append(Vector2(0,size.y))
-		newUV.append(size)
-		newUV.append(Vector2(size.x,0))
-		newUV.append(Vector2.ZERO)
+		newUV.append(Vector2(addX,size.y))
+		newUV.append(size + Vector2(addX,0))
+		newUV.append(Vector2(size.x + addX,0))
+		newUV.append(Vector2(addX,0))
 		
 		polygon.uv = newUV
+		addX += (points[i] - points[i+1]).length()
 		
 		i += 1
 
 func setAmbientOcclusion():
 	var newUV = PackedColorArray()
 	
-	var shadeColor :Color = Color(0.8,0.8,0.8)
+	
 	
 	newUV.append(shadeColor)
 	newUV.append(shadeColor)

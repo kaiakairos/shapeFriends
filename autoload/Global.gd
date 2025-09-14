@@ -17,6 +17,7 @@ signal updateCamRotation(pos:Vector2i,angle:float)
 signal updateCamPosition(pos:Vector2i,angle:float)
 
 func _ready() -> void:
+	RenderingServer.set_default_clear_color(Color.BLACK)
 	add_child(canvasLayer)
 
 func hasTag(tag:String) -> bool:
