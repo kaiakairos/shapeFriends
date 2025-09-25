@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PartyMember" load_steps=3 format=3 uid="uid://bp7jc3qls7q0u"]
+
+[ext_resource type="Script" uid="uid://b62o5t3h5cjar" path="res://classes/PartyMember.gd" id="1_txbql"]
+[ext_resource type="Texture2D" uid="uid://c57rb532wks3f" path="res://object_scenes/player/playerSkins/triangle.png" id="2_8ob3j"]
+
+[resource]
+script = ExtResource("1_txbql")
+name = "oval"
+worldMovementSprite = ExtResource("2_8ob3j")
+metadata/_custom_type_script = "uid://b62o5t3h5cjar"

@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://cri2lwwlbewq1"]
+
+[ext_resource type="Script" uid="uid://bc1qlhsl1l4r2" path="res://fighting/battleScene/battle_scene.gd" id="1_2lh5m"]
+[ext_resource type="Texture2D" uid="uid://lecnsa6td1nu" path="res://fighting/battleScene/battleFloor.png" id="2_ys2c1"]
+
+[node name="BattleScene" type="Node2D" node_paths=PackedStringArray("gameWorldRoot", "battleCamera", "uiRoot", "actorContainer")]
+script = ExtResource("1_2lh5m")
+gameWorldRoot = NodePath("viewportContainer/GameWorld")
+battleCamera = NodePath("viewportContainer/GameWorld/Camera2D")
+uiRoot = NodePath("UI")
+actorContainer = NodePath("viewportContainer/GameWorld/battleActorContainer")
+
+[node name="viewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 400.0
+offset_bottom = 300.0
+
+[node name="GameWorld" type="SubViewport" parent="viewportContainer"]
+transparent_bg = true
+size = Vector2i(400, 300)
+
+[node name="Camera2D" type="Camera2D" parent="viewportContainer/GameWorld"]
+position = Vector2(200, 150)
+ignore_rotation = false
+zoom = Vector2(1, 0.5)
+
+[node name="BattleFloor" type="Sprite2D" parent="viewportContainer/GameWorld"]
+position = Vector2(200, 150)
+texture = ExtResource("2_ys2c1")
+
+[node name="battleActorContainer" type="Node2D" parent="viewportContainer/GameWorld"]
+
+[node name="UI" type="Node2D" parent="."]

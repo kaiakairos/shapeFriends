@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PartyMember" load_steps=3 format=3 uid="uid://bnn0bdml3gl1i"]
+
+[ext_resource type="Script" uid="uid://b62o5t3h5cjar" path="res://classes/PartyMember.gd" id="1_rurqd"]
+[ext_resource type="Texture2D" uid="uid://c57rb532wks3f" path="res://object_scenes/player/playerSkins/triangle.png" id="2_tiyh2"]
+
+[resource]
+script = ExtResource("1_rurqd")
+name = "rhombus"
+worldMovementSprite = ExtResource("2_tiyh2")
+metadata/_custom_type_script = "uid://b62o5t3h5cjar"

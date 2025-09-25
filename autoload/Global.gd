@@ -19,18 +19,15 @@ signal updateCamPosition(pos:Vector2i,angle:float)
 func _ready() -> void:
 	RenderingServer.set_default_clear_color(Color.BLACK)
 	add_child(canvasLayer)
+	
+	var ins = load("res://fighting/battleScene/battle_scene.tscn").instantiate()
+	canvasLayer.add_child( ins )
 
 func hasTag(tag:String) -> bool:
 	return arbitraryTagData.has(tag)
 
 func addTag(tag:String) -> void:
 	arbitraryTagData[tag] = true
-
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("testQuicksave"):
-		saveGame()
-	if Input.is_action_just_pressed("testQuickload"):
-		loadGame()
 
 func switchLevel(levelFileString:String,position:Vector2,facing:int=0) -> void:
 	
@@ -57,47 +54,3 @@ func switchLevel(levelFileString:String,position:Vector2,facing:int=0) -> void:
 	await tween2.finished
 	rect.queue_free()
 	
-	
-
-
-func saveGame():
-	
-	var data :Dictionary= {}
-	
-	var loadedScene = get_tree().current_scene
-	data["levelFile"] = loadedScene.scene_file_path
-	data["party"] = var_to_bytes_with_objects(BattleData.players)
-	data["inventory"] = Item.inventory
-	data["teamLevel"] = BattleData.teamLevel
-	data["teamXP"] = BattleData.teamExperience
-	data["arbitraryData"] = arbitraryTagData
-	
-	if is_instance_valid(player):
-		data["playerPos"] = var_to_str(player.position)
-	
-	print(data)
-	#print(var_to_bytes_with_objects(BattleData.players))
-	Saving.write_save("save1",data)
-
-func loadGame():
-	var data = Saving.read_save("save1")
-	print(data)
-	#print(bytes_to_var_with_objects(str_to_var(data["party"])))
-	BattleData.players = bytes_to_var_with_objects( str_to_var(data["party"])  )
-	var a :Array = data["inventory"]
-	var newArrayFUCK :Array[String] = []
-	for item in a:
-		newArrayFUCK.append(item)
-	Item.inventory = newArrayFUCK
-	BattleData.teamLevel = (data["teamLevel"])
-	BattleData.teamExperience = data["teamXP"]
-	if data.has("playerPos"):
-		playerLoadPosition = str_to_var(data["playerPos"])
-		print(str_to_var(data["playerPos"]))
-	else:
-		playerLoadPosition = Vector2i(-999,-999)
-	
-	arbitraryTagData = data["arbitraryData"]
-	
-	BattleData.resetPlayerHealths()
-	get_tree().change_scene_to_file(data["levelFile"])

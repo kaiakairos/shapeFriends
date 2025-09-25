@@ -29,13 +29,15 @@ func _ready() -> void:
 	if Global.playerLoadPosition != Vector2i(-999,-999):
 		global_position = Vector2( Global.playerLoadPosition )
 	
+	var numOfPartyMembers :int = PartyInfo.currentPartyMembers.size()
+	
 	positionLastFrame = global_position
-	friendPosArray.resize( BattleData.players.size() * FRIENDDISTANCE )
+	friendPosArray.resize( numOfPartyMembers * FRIENDDISTANCE )
 	friendPosArray.fill( Vector4i(global_position.x,global_position.y-1,Global.playerLoadFacing,0))
 	
-	for i in range(BattleData.players.size()):
+	for i in range(numOfPartyMembers):
 		var newSprite = Sprite2D.new()
-		newSprite.texture = BattleData.players[i].worldSprite
+		newSprite.texture = PartyInfo.getPartyMemberWalkSprite(PartyInfo.currentPartyMembers[i])
 		newSprite.hframes = 5
 		newSprite.vframes = 3
 		newSprite.offset.y = -7
@@ -124,7 +126,7 @@ func appendFriendArray():
 		return # we haven't moved, do nothing
 	
 	friendPosArray.insert(0, Vector4i(global_position.x,global_position.y,mcSprite.frame_coords.x,float(mcSprite.flip_h)))
-	friendPosArray.resize( BattleData.players.size() * FRIENDDISTANCE )
+	friendPosArray.resize( PartyInfo.currentPartyMembers.size() * FRIENDDISTANCE )
 
 func moveFriends():
 	var i :int= 0

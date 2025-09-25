@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PartyMember" load_steps=3 format=3 uid="uid://crqcnu2t25spm"]
+
+[ext_resource type="Script" uid="uid://b62o5t3h5cjar" path="res://classes/PartyMember.gd" id="1_rhrsi"]
+[ext_resource type="Texture2D" uid="uid://csg6amkxp2rtq" path="res://object_scenes/player/playerSkins/square.png" id="2_v2dci"]
+
+[resource]
+script = ExtResource("1_rhrsi")
+name = "square"
+worldMovementSprite = ExtResource("2_v2dci")
+metadata/_custom_type_script = "uid://b62o5t3h5cjar"

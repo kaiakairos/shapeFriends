@@ -18,11 +18,10 @@ config/icon="uid://cdgx5tdxklypm"
 
 [autoload]
 
-BattleData="*res://autoload/BattleData.gd"
 Global="*res://autoload/Global.gd"
 Dialogue="*res://autoload/Dialogue.gd"
-Item="*res://autoload/Item.gd"
 Saving="*res://autoload/Saving.gd"
+PartyInfo="*res://autoload/PartyInfo.gd"
 
 [debug]
 
