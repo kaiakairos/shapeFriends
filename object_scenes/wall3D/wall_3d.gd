@@ -17,11 +17,17 @@ class_name Wall3D
 
 @onready var polygonContainer :Node2D= $polygons
 
+@export var overwriteGlobalCamera:Node2D
+var camera
 
 func _ready() -> void:
 	createWallPolygons()
-	Global.connect("updateCamRotation",setPolygons)
-	Global.connect("updateCamPosition",cameraPosOnlyUpdate)
+	if overwriteGlobalCamera == null:
+		Global.connect("updateCamRotation",setPolygons)
+		Global.connect("updateCamPosition",cameraPosOnlyUpdate)
+		camera = Global.camera
+	else:
+		camera = overwriteGlobalCamera
 	default_color = Color.TRANSPARENT
 	
 	if wallTexture != null:
@@ -51,8 +57,8 @@ func setPolygons(camPos:Vector2i,camAngle:float):
 			i += 1
 			continue
 		
-		var pos1 = Global.camera.getZ(to_global(points[i]))
-		var pos2 = Global.camera.getZ(to_global(points[i+1]))
+		var pos1 = camera.getZ(to_global(points[i]))
+		var pos2 = camera.getZ(to_global(points[i+1]))
 		
 		polygonOBJ.z_index = min(pos1,pos2)
 		if z_index_force != 0:
@@ -72,8 +78,8 @@ func setPolygons(camPos:Vector2i,camAngle:float):
 func cameraPosOnlyUpdate(camPos:Vector2i,camAngle:float):
 	var i :int =0
 	for polygonOBJ in polygonContainer.get_children():
-		var pos1 = Global.camera.getZ(to_global(points[i]))
-		var pos2 = Global.camera.getZ(to_global(points[i+1]))
+		var pos1 = camera.getZ(to_global(points[i]))
+		var pos2 = camera.getZ(to_global(points[i+1]))
 		
 		polygonOBJ.z_index = min(pos1,pos2)
 		i += 1

@@ -8,4 +8,5 @@ script = ExtResource("1_aelln")
 name = "triangle"
 worldMovementSprite = ExtResource("2_3s111")
 baseHealth = 20
+battleActorFile = "res://fighting/actors/party/triangle.tscn"
 metadata/_custom_type_script = "uid://b62o5t3h5cjar"

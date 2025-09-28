@@ -13,8 +13,6 @@ var allPartyMembers :Dictionary[String,PartyMember] = { # Not edited in game
 var currentPartyMembers :Array[String] = [ # can be edited and should be saved
 	"square",
 	"triangle",
-	"rhombus",
-	"oval"
 ]
 
 func getPartyMemberWalkSprite(memberName:String) -> Texture2D:
@@ -22,3 +20,9 @@ func getPartyMemberWalkSprite(memberName:String) -> Texture2D:
 
 func checkForPartyMember(member:String) -> bool:
 	return currentPartyMembers.has(member)
+
+func getPartyCount() -> int:
+	return currentPartyMembers.size()
+
+func getPartyResourceByIndex(index:int) -> PartyMember:
+	return allPartyMembers[ currentPartyMembers[index] ]

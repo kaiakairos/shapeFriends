@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://do8ehrj6vlks7"]
+
+[ext_resource type="Script" uid="uid://dhhso0hp72tkj" path="res://classes/BattleActor.gd" id="1_m808p"]
+[ext_resource type="Texture2D" uid="uid://c57rb532wks3f" path="res://object_scenes/player/playerSkins/triangle.png" id="2_0yje5"]
+
+[node name="triangle" type="Node2D"]
+script = ExtResource("1_m808p")
+actorName = "triangle"
+alliance = 1
+availableMoves = Array[String](["laser"])
+metadata/_custom_type_script = "uid://dhhso0hp72tkj"
+
+[node name="Square" type="Sprite2D" parent="."]
+position = Vector2(0, -9)
+texture = ExtResource("2_0yje5")
+hframes = 5
+vframes = 3

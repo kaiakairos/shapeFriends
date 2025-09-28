@@ -29,7 +29,7 @@ func _ready() -> void:
 	if Global.playerLoadPosition != Vector2i(-999,-999):
 		global_position = Vector2( Global.playerLoadPosition )
 	
-	var numOfPartyMembers :int = PartyInfo.currentPartyMembers.size()
+	var numOfPartyMembers :int = PartyInfo.getPartyCount()
 	
 	positionLastFrame = global_position
 	friendPosArray.resize( numOfPartyMembers * FRIENDDISTANCE )
@@ -126,7 +126,7 @@ func appendFriendArray():
 		return # we haven't moved, do nothing
 	
 	friendPosArray.insert(0, Vector4i(global_position.x,global_position.y,mcSprite.frame_coords.x,float(mcSprite.flip_h)))
-	friendPosArray.resize( PartyInfo.currentPartyMembers.size() * FRIENDDISTANCE )
+	friendPosArray.resize( PartyInfo.getPartyCount() * FRIENDDISTANCE )
 
 func moveFriends():
 	var i :int= 0

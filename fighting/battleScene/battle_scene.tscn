@@ -1,32 +1,108 @@
-[gd_scene load_steps=3 format=3 uid="uid://cri2lwwlbewq1"]
+[gd_scene load_steps=4 format=3 uid="uid://cri2lwwlbewq1"]
 
 [ext_resource type="Script" uid="uid://bc1qlhsl1l4r2" path="res://fighting/battleScene/battle_scene.gd" id="1_2lh5m"]
 [ext_resource type="Texture2D" uid="uid://lecnsa6td1nu" path="res://fighting/battleScene/battleFloor.png" id="2_ys2c1"]
+[ext_resource type="PackedScene" uid="uid://dl3g67afy4yg7" path="res://object_scenes/wall3D/wall_3d.tscn" id="3_l2i03"]
 
-[node name="BattleScene" type="Node2D" node_paths=PackedStringArray("gameWorldRoot", "battleCamera", "uiRoot", "actorContainer")]
+[node name="BattleScene" type="Node2D" node_paths=PackedStringArray("gameWorldRoot", "battleCamera", "uiRoot", "actorContainer", "tilePreviewContainer", "moveAnimationContainer")]
 script = ExtResource("1_2lh5m")
 gameWorldRoot = NodePath("viewportContainer/GameWorld")
 battleCamera = NodePath("viewportContainer/GameWorld/Camera2D")
 uiRoot = NodePath("UI")
 actorContainer = NodePath("viewportContainer/GameWorld/battleActorContainer")
+tilePreviewContainer = NodePath("viewportContainer/GameWorld/tilePreview")
+moveAnimationContainer = NodePath("viewportContainer/GameWorld/moveAnimations")
 
 [node name="viewportContainer" type="SubViewportContainer" parent="."]
+offset_top = -24.0
 offset_right = 400.0
-offset_bottom = 300.0
+offset_bottom = 276.0
 
 [node name="GameWorld" type="SubViewport" parent="viewportContainer"]
 transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
 size = Vector2i(400, 300)
+render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="viewportContainer/GameWorld"]
 position = Vector2(200, 150)
+rotation = 0.7853982
 ignore_rotation = false
 zoom = Vector2(1, 0.5)
 
 [node name="BattleFloor" type="Sprite2D" parent="viewportContainer/GameWorld"]
+z_index = -1000
 position = Vector2(200, 150)
 texture = ExtResource("2_ys2c1")
 
 [node name="battleActorContainer" type="Node2D" parent="viewportContainer/GameWorld"]
+position = Vector2(100, 50)
+
+[node name="walls" type="Node2D" parent="viewportContainer/GameWorld"]
+
+[node name="wall3D" parent="viewportContainer/GameWorld/walls" node_paths=PackedStringArray("overwriteGlobalCamera") instance=ExtResource("3_l2i03")]
+position = Vector2(113, 30)
+points = PackedVector2Array(-13, 20, 187, 20, 187, 220, -13, 220, -13, 20)
+wallTexture = ExtResource("2_ys2c1")
+wallHeight = 32
+generateCollider = false
+shadeColor = Color(0, 0, 0, 1)
+wallOffset = -32
+reversed = true
+overwriteGlobalCamera = NodePath("../../../..")
+
+[node name="tilePreview" type="Node2D" parent="viewportContainer/GameWorld"]
+z_index = -100
+position = Vector2(100, 50)
+
+[node name="debugArrow" type="Line2D" parent="viewportContainer/GameWorld"]
+points = PackedVector2Array(170, 270, 198, 282, 224, 270)
+width = 4.0
+
+[node name="moveAnimations" type="Node2D" parent="viewportContainer/GameWorld"]
+position = Vector2(100, 50)
 
 [node name="UI" type="Node2D" parent="."]
+
+[node name="selectMain" type="Node2D" parent="UI"]
+visible = false
+
+[node name="Label" type="Label" parent="UI/selectMain"]
+offset_left = 314.0
+offset_top = 192.0
+offset_right = 393.0
+offset_bottom = 293.0
+text = "<abilities>
+<move>
+<items>
+<defend>"
+horizontal_alignment = 2
+
+[node name="arrow" type="Node2D" parent="UI/selectMain"]
+position = Vector2(290, 200)
+
+[node name="ColorRect" type="ColorRect" parent="UI/selectMain/arrow"]
+offset_right = 15.0
+offset_bottom = 8.0
+
+[node name="selectSpell" type="Node2D" parent="UI"]
+visible = false
+
+[node name="Label" type="Label" parent="UI/selectSpell"]
+offset_left = 263.0
+offset_top = 193.0
+offset_right = 378.0
+offset_bottom = 294.0
+text = "<spell>
+<ytryrtrtt>
+<spell>
+<spell>"
+horizontal_alignment = 2
+
+[node name="arrow" type="Node2D" parent="UI/selectSpell"]
+position = Vector2(384, 200)
+
+[node name="ColorRect" type="ColorRect" parent="UI/selectSpell/arrow"]
+offset_right = 15.0
+offset_bottom = 8.0

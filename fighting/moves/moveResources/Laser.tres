@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Move" load_steps=5 format=3 uid="uid://0qnc1fcjrty3"]
+
+[ext_resource type="Texture2D" uid="uid://dxuw8t3hlosgl" path="res://fighting/moves/hitboxTextures/line.png" id="1_020fe"]
+[ext_resource type="Script" uid="uid://dmljyrpf70die" path="res://classes/Move.gd" id="1_pu33o"]
+[ext_resource type="PackedScene" uid="uid://bcgoljhyfnjbm" path="res://fighting/moves/moveAnimations/test/laser.tscn" id="2_3jh2v"]
+[ext_resource type="Texture2D" uid="uid://do7678805a5vm" path="res://fighting/moves/hitboxTextures/surroundingsAndSelf.png" id="2_c4u1o"]
+
+[resource]
+script = ExtResource("1_pu33o")
+moveDisplayName = "Laser"
+moveID = "laser"
+speed = 80
+moveAnimation = ExtResource("2_3jh2v")
+hitboxMode = 1
+hitboxTextures = Array[Texture2D]([ExtResource("1_020fe"), ExtResource("2_c4u1o")])
+metadata/_custom_type_script = "uid://dmljyrpf70die"

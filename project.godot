@@ -22,6 +22,7 @@ Global="*res://autoload/Global.gd"
 Dialogue="*res://autoload/Dialogue.gd"
 Saving="*res://autoload/Saving.gd"
 PartyInfo="*res://autoload/PartyInfo.gd"
+MoveHandler="*res://autoload/MoveHandler.gd"
 
 [debug]
 
@@ -50,6 +51,9 @@ folder_colors={
 "res://classes/": "orange",
 "res://dialogue/": "yellow",
 "res://fighting/": "green",
+"res://fighting/moves/hitboxTextures/": "red",
+"res://fighting/moves/moveAnimations/": "orange",
+"res://fighting/moves/moveResources/": "yellow",
 "res://object_scenes/": "teal",
 "res://sound/": "blue",
 "res://ui_scenes/": "purple",

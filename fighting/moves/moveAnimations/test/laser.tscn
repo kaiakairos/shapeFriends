@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcgoljhyfnjbm"]
+
+[ext_resource type="Script" uid="uid://ee30wthqk8xv" path="res://fighting/moves/moveAnimations/test/laser.gd" id="1_5pwsh"]
+
+[node name="Laser" type="Node2D"]
+script = ExtResource("1_5pwsh")
+metadata/_custom_type_script = "uid://cca1vrgpsi5dl"
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 1, 180, 90)
+width = 3.18

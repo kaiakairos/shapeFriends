@@ -11,3 +11,5 @@ class_name PartyMember
 
 ## How fast this character moves during a battle
 @export var battleMovementSpeed :int = 50
+
+@export var battleActorFile :String = ""

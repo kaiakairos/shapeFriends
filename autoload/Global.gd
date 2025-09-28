@@ -20,8 +20,8 @@ func _ready() -> void:
 	RenderingServer.set_default_clear_color(Color.BLACK)
 	add_child(canvasLayer)
 	
-	var ins = load("res://fighting/battleScene/battle_scene.tscn").instantiate()
-	canvasLayer.add_child( ins )
+	#var ins = load("res://fighting/battleScene/battle_scene.tscn").instantiate()
+	#canvasLayer.add_child( ins )
 
 func hasTag(tag:String) -> bool:
 	return arbitraryTagData.has(tag)

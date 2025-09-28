@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://d23ldy8akvv8p"]
+
+[ext_resource type="Script" uid="uid://dhhso0hp72tkj" path="res://classes/BattleActor.gd" id="1_w55gn"]
+[ext_resource type="Texture2D" uid="uid://wt6mf2y8ef7u" path="res://fighting/actors/enemies/test/goku.png" id="2_wjan4"]
+
+[node name="Goku" type="Node2D"]
+script = ExtResource("1_w55gn")
+actorName = "Goku"
+availableMoves = Array[String]([""])
+metadata/_custom_type_script = "uid://dhhso0hp72tkj"
+
+[node name="Goku" type="Sprite2D" parent="."]
+position = Vector2(-0.49999952, -21.000002)
+scale = Vector2(0.26041666, 0.3255814)
+texture = ExtResource("2_wjan4")

@@ -7,4 +7,5 @@
 script = ExtResource("1_rhrsi")
 name = "square"
 worldMovementSprite = ExtResource("2_v2dci")
+battleActorFile = "res://fighting/actors/party/square.tscn"
 metadata/_custom_type_script = "uid://b62o5t3h5cjar"

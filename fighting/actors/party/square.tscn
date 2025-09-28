@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://baur3mqmhstop"]
+
+[ext_resource type="Script" uid="uid://dhhso0hp72tkj" path="res://classes/BattleActor.gd" id="1_bywu2"]
+[ext_resource type="Texture2D" uid="uid://csg6amkxp2rtq" path="res://object_scenes/player/playerSkins/square.png" id="2_6nqmc"]
+
+[node name="Square" type="Node2D"]
+script = ExtResource("1_bywu2")
+actorName = "square"
+alliance = 1
+availableMoves = Array[String](["testMove", "laser"])
+metadata/_custom_type_script = "uid://dhhso0hp72tkj"
+
+[node name="Square" type="Sprite2D" parent="."]
+position = Vector2(0, -9)
+texture = ExtResource("2_6nqmc")
+hframes = 5
+vframes = 3

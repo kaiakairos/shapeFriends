@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuem6cv8d47x4"]
+
+[ext_resource type="Script" uid="uid://dhhso0hp72tkj" path="res://classes/BattleActor.gd" id="1_7bjf6"]
+[ext_resource type="Texture2D" uid="uid://lxredmv5wxby" path="res://fighting/actors/enemies/test/tien.png" id="2_rjlle"]
+
+[node name="coolTien" type="Node2D"]
+script = ExtResource("1_7bjf6")
+actorName = "Tien"
+metadata/_custom_type_script = "uid://dhhso0hp72tkj"
+
+[node name="Tien" type="Sprite2D" parent="."]
+position = Vector2(0.49999952, -17.25)
+scale = Vector2(0.42857143, 0.8255814)
+texture = ExtResource("2_rjlle")

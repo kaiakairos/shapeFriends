@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Move" load_steps=4 format=3 uid="uid://x80rayik25t2"]
+
+[ext_resource type="Texture2D" uid="uid://co5uekncq6bmc" path="res://fighting/moves/hitboxTextures/kame.png" id="1_i64lf"]
+[ext_resource type="PackedScene" uid="uid://ckycsgcvqcnjf" path="res://fighting/moves/moveAnimations/test/test_move.tscn" id="2_cdc4h"]
+[ext_resource type="Script" uid="uid://dmljyrpf70die" path="res://classes/Move.gd" id="3_tidsk"]
+
+[resource]
+script = ExtResource("3_tidsk")
+moveDisplayName = "Test Move"
+moveID = "testMove"
+speed = 10
+moveAnimation = ExtResource("2_cdc4h")
+hitboxTextures = Array[Texture2D]([ExtResource("1_i64lf")])
+metadata/_custom_type_script = "uid://dmljyrpf70die"

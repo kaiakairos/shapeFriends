@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh3xnys7t20c4"]
+
+[ext_resource type="Script" uid="uid://dhhso0hp72tkj" path="res://classes/BattleActor.gd" id="1_ud7ut"]
+[ext_resource type="Texture2D" uid="uid://downmwy3t85bi" path="res://fighting/actors/enemies/test/vegeta.png" id="2_876pj"]
+
+[node name="vegeta" type="Node2D"]
+script = ExtResource("1_ud7ut")
+actorName = "Vegeta"
+metadata/_custom_type_script = "uid://dhhso0hp72tkj"
+
+[node name="Vegeta" type="Sprite2D" parent="."]
+position = Vector2(0.49999905, -21)
+scale = Vector2(0.11500001, 0.21)
+texture = ExtResource("2_876pj")
